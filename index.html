@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zubayer Ahmad</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Zubayer Ahmad, full-stack developer in Dhaka: Django, Next.js and deep learning projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,500;112,700;112,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Hind+Siliguri:wght@500&display=swap">
+<style>
+/* Layout: a fixed identity column on the left (name, links, section index) and a reading column of work on the right; one column on phones. */
+:root {
+  --paper: #F2F5F3;
+  --surface: #FFFFFF;
+  --ink: #15201B;
+  --muted: #5A6A62;
+  --line: #D5DED9;
+  --green: #0A6B4D;   /* deep bottle green */
+  --green-soft: #DDEEE6;
+  --red: #C8283C;     /* used once: the dot on Dhaka */
+  --display: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --bangla: "Hind Siliguri", "Noto Sans Bengali", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0F1613; --surface: #16201C; --ink: #E6EEEA; --muted: #9AAEA5;
+    --line: #2A3832; --green: #4FC596; --green-soft: #173A2D; --red: #F0566A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0F1613; --surface: #16201C; --ink: #E6EEEA; --muted: #9AAEA5;
+  --line: #2A3832; --green: #4FC596; --green-soft: #173A2D; --red: #F0566A;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 400 16px/1.65 var(--body);
+}
+a { color: var(--green); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 3px; }
+
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 48px 64px;
+  display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 72px;
+}
+@media (max-width: 860px) {
+  .wrap { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-block: 32px 48px; }
+}
+
+/* ---------- identity column ---------- */
+.id { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 48px); align-self: start; display: flex; flex-direction: column; gap: 28px; }
+@media (max-width: 860px) { .id { position: static; } }
+.name {
+  font-family: var(--display); font-stretch: 112%; font-weight: 800;
+  font-size: clamp(2.4rem, 5vw, 3.1rem); line-height: 0.95; letter-spacing: -0.02em;
+  margin: 0; text-wrap: balance;
+}
+.role { margin: 10px 0 0; font-size: 1.05rem; color: var(--muted); }
+.place { font-family: var(--mono); font-size: 0.82rem; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+.place::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 3px var(--green); }
+.links { display: flex; flex-direction: column; gap: 6px; font-size: 0.95rem; }
+.index { display: flex; flex-direction: column; gap: 2px; border-top: 1px solid var(--line); padding-top: 16px; }
+.index a { color: var(--muted); text-decoration: none; font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 0; }
+.index a:hover { color: var(--ink); }
+@media (max-width: 860px) { .index { flex-direction: row; flex-wrap: wrap; gap: 4px 18px; } }
+
+/* ---------- reading column ---------- */
+main { display: flex; flex-direction: column; gap: 72px; min-width: 0; }
+section { display: flex; flex-direction: column; gap: 24px; scroll-margin-top: 32px; }
+.label {
+  font-family: var(--mono); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--green); margin: 0;
+}
+.lede { font-family: var(--display); font-stretch: 112%; font-weight: 500; font-size: clamp(1.45rem, 2.6vw, 1.9rem); line-height: 1.28; margin: 0; max-width: 30ch; text-wrap: balance; }
+.lede strong { font-weight: 700; color: var(--green); }
+p { margin: 0; max-width: 65ch; }
+.now { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; max-width: 65ch; }
+.now li { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 16px; }
+.now span { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); padding-top: 3px; }
+
+/* ---------- projects ---------- */
+.project { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 28px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.project.lead { border-top: 4px solid var(--green); }
+.p-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
+.p-title { font-family: var(--display); font-stretch: 112%; font-weight: 700; font-size: 1.5rem; line-height: 1.15; margin: 0; }
+.p-title .bn { font-family: var(--bangla); font-weight: 500; font-size: 1.05rem; color: var(--muted); margin-left: 8px; }
+.p-year { font-family: var(--mono); font-size: 0.82rem; color: var(--muted); }
+.p-sub { color: var(--muted); margin-top: -8px; }
+.points { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; max-width: 65ch; }
+.points li::marker { color: var(--green); }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; padding-top: 16px; border-top: 1px dashed var(--line); }
+.tag { font-family: var(--mono); font-size: 0.76rem; padding: 3px 8px; border-radius: 3px; background: var(--green-soft); color: var(--ink); }
+.status { font-family: var(--mono); font-size: 0.76rem; color: var(--muted); margin-left: auto; display: flex; gap: 14px; flex-wrap: wrap; }
+@media (max-width: 560px) { .status { margin-left: 0; width: 100%; } .project { padding: 20px; } }
+
+.figs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.fig { border-left: 2px solid var(--green); padding-left: 12px; }
+.fig b { display: block; font-family: var(--display); font-stretch: 112%; font-weight: 700; font-size: 1.45rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.fig span { font-size: 0.82rem; color: var(--muted); }
+@media (max-width: 560px) { .figs { grid-template-columns: minmax(0, 1fr); } }
+
+.chart-box { overflow-x: auto; }
+.chart-box svg { display: block; width: 100%; min-width: 460px; height: auto; }
+.chart-note { font-size: 0.82rem; color: var(--muted); }
+
+/* ---------- skills / background ---------- */
+.rows { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.row { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.row dt { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); padding-top: 3px; }
+.row dd { margin: 0; }
+.row .when { display: block; font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
+@media (max-width: 560px) { .row { grid-template-columns: minmax(0, 1fr); gap: 2px; } }
+
+/* ---------- contact ---------- */
+.mail { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.mail code { font-family: var(--mono); font-size: 1rem; background: var(--surface); border: 1px solid var(--line); padding: 8px 12px; border-radius: 4px; user-select: all; overflow-wrap: anywhere; }
+.copy { font: 500 0.88rem var(--body); color: var(--paper); background: var(--green); border: 0; border-radius: 4px; padding: 9px 14px; cursor: pointer; }
+.copy:hover { filter: brightness(1.08); }
+footer { font-family: var(--mono); font-size: 0.76rem; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <aside class="id">
+    <div>
+      <h1 class="name">Zubayer<br>Ahmad</h1>
+      <p class="role">Full-stack developer · Django, Next.js and deep learning</p>
+    </div>
+    <div class="place">Dhaka, Bangladesh</div>
+    <nav class="links" aria-label="Profiles">
+      <a href="https://github.com/zatrabbi">github.com/zatrabbi</a>
+      <a href="https://www.linkedin.com/in/zubayer-ahmad/">linkedin.com/in/zubayer-ahmad</a>
+      <a href="#contact">zubayer.ahmad.cs@gmail.com</a>
+    </nav>
+    <nav class="index" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#background">Background</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </aside>
+
+  <main>
+    <section id="about">
+      <p class="label">About</p>
+      <p class="lede">I build web software that real people use, and I run one of those projects as <strong>a live online store</strong>.</p>
+      <p>I'm a final-year Computer Science student at Dhaka International University, graduating in October 2026. I work across the stack: database design, server logic, interfaces in two languages, and the tests and pipelines that keep them working. My thesis team trains and compares deep-learning models for plant disease diagnosis.</p>
+      <ul class="now">
+        <li><span>Building</span><div>KUASHA, an English/Bangla clothing store, now in production</div></li>
+        <li><span>Researching</span><div>Papaya leaf disease classification with CNNs and vision transformers</div></li>
+        <li><span>Learning</span><div>Cloud deployment and DevOps: Docker, CI/CD and AWS</div></li>
+      </ul>
+    </section>
+
+    <section id="work">
+      <p class="label">Selected work</p>
+
+      <article class="project lead">
+        <div class="p-head">
+          <h2 class="p-title">KUASHA<span class="bn" lang="bn">কুয়াশা</span></h2>
+          <span class="p-year">2026 · in production</span>
+        </div>
+        <p class="p-sub">A bilingual e-commerce store for a winter-clothing business in Bangladesh.</p>
+        <ul class="points">
+          <li>Every page switches between Bangla and English, including the owner's admin panel.</li>
+          <li>PostgreSQL schema on Supabase for products, colour/size variants, orders, reviews and Q&amp;A, with row-level security on every table.</li>
+          <li>Prices, stock and delivery charges are calculated in the database, so a customer cannot change a price from the browser.</li>
+          <li>Cash-on-delivery and bKash/Nagad checkout, order tracking by order number and phone, and confirmation emails in the customer's language.</li>
+          <li>Multi-stage Docker image with a health check; GitHub Actions runs tests, a production build and a container smoke test on every push.</li>
+        </ul>
+        <div class="meta">
+          <span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Supabase</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">GitHub Actions</span>
+          <span class="status"><a href="https://kuashabd.netlify.app">Visit the live store</a><span>Code private · walkthrough on request</span></span>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="p-head">
+          <h2 class="p-title">PapayaFusionNet</h2>
+          <span class="p-year">2026 · B.Sc. thesis, team</span>
+        </div>
+        <p class="p-sub">Diagnosing papaya leaf diseases from photos taken in Bangladeshi fields.</p>
+        <div class="figs">
+          <div class="fig"><b>4,436</b><span>images we photographed, 6 classes</span></div>
+          <div class="fig"><b>10</b><span>CNN and transformer models, 3 seeds each</span></div>
+          <div class="fig"><b>97.75%</b><span>best test accuracy (MaxViT-Tiny)</span></div>
+        </div>
+        <div class="chart-box" role="img" aria-label="Test accuracy by model, mean and range over three seeds. MaxViT-Tiny 97.75, ConvNeXt-Tiny 97.40, CoAtNet-0 97.20, Swin-Tiny 97.05, ViT-B/16 96.55, EfficientNetV2-S 96.05, MobileNetV3-Large 94.64 percent.">
+          <svg id="acc-chart" viewBox="0 0 640 262" xmlns="http://www.w3.org/2000/svg"></svg>
+        </div>
+        <p class="chart-note">Test accuracy, mean ± standard deviation over 3 random seeds, for 7 of the 10 models we benchmarked.</p>
+        <ul class="points">
+          <li>Labels verified by a plant pathologist at the Bangladesh Agricultural Research Council.</li>
+          <li>Removed exact and near-duplicate photos with perceptual hashing, then audited the 70/15/15 split for leakage.</li>
+          <li>An external test set scored 70.2%, which showed a real-world domain shift that the thesis analyses.</li>
+          <li>Built PlantSense AI, a web app that diagnoses a leaf from a single photo using the best model.</li>
+        </ul>
+        <div class="meta">
+          <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">timm</span><span class="tag">Kaggle</span>
+          <span class="status"><span>Dataset paper in preparation</span></span>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="p-head">
+          <h2 class="p-title">BookBazar</h2>
+          <span class="p-year">2025</span>
+        </div>
+        <p class="p-sub">An online bookstore built with Django.</p>
+        <ul class="points">
+          <li>Email-based accounts, nested categories, authors and publishers, search, reviews and wishlists.</li>
+          <li>Cart, checkout with saved addresses, promo codes and Stripe card payments in test mode.</li>
+          <li>Staff pages to add, edit and delete books, alongside the Django admin.</li>
+          <li>Secrets kept in environment variables; 26 automated tests run on every push.</li>
+        </ul>
+        <div class="meta">
+          <span class="tag">Python</span><span class="tag">Django</span><span class="tag">SQLite</span><span class="tag">Stripe</span><span class="tag">GitHub Actions</span>
+          <span class="status"><a href="https://github.com/zatrabbi/Django-project-Bookbazar-E-Commerce-platform.-">Read the code on GitHub</a></span>
+        </div>
+      </article>
+    </section>
+
+    <section id="skills">
+      <p class="label">Skills</p>
+      <dl class="rows">
+        <div class="row"><dt>Languages</dt><dd>Python, JavaScript, SQL, HTML, CSS</dd></div>
+        <div class="row"><dt>Web</dt><dd>Django, React, Next.js (App Router), Bootstrap</dd></div>
+        <div class="row"><dt>Data</dt><dd>PostgreSQL (Supabase: Auth, Storage, row-level security), SQLite, Django ORM</dd></div>
+        <div class="row"><dt>DevOps</dt><dd>Docker, GitHub Actions, Git, Netlify, Linux and macOS command line</dd></div>
+        <div class="row"><dt>Machine learning</dt><dd>PyTorch, timm, Kaggle, Roboflow, Label Studio</dd></div>
+        <div class="row"><dt>Languages spoken</dt><dd>Bangla (native), English (working proficiency)</dd></div>
+      </dl>
+    </section>
+
+    <section id="background">
+      <p class="label">Background</p>
+      <dl class="rows">
+        <div class="row"><dt>Education</dt><dd>B.Sc. in Computer Science and Engineering, Dhaka International University · CGPA 3.34 / 4.00<span class="when">2022 – Oct 2026 (expected)</span></dd></div>
+        <div class="row"><dt>Work</dt><dd>Youth Organizer, Bangladesh Free Trade Union Congress: documents, reports and presentations in a team<span class="when">Jan 2025 – Jul 2026</span></dd></div>
+        <div class="row"><dt>Teaching</dt><dd>Private tutor, in person and online<span class="when">Apr 2024 – present</span></dd></div>
+        <div class="row"><dt>Leadership</dt><dd>Joint Secretary of the CSE Debating Club; member of the Programming Club</dd></div>
+        <div class="row"><dt>Awards</dt><dd>Best Debater at upazila level (HSC); Best Speaker in school debating; Best Written Work at a college science fair</dd></div>
+      </dl>
+    </section>
+
+    <section id="contact">
+      <p class="label">Contact</p>
+      <p class="lede">Open to software engineering internships and graduate roles, including in Japan.</p>
+      <div class="mail">
+        <code id="email">zubayer.ahmad.cs@gmail.com</code>
+        <button class="copy" id="copy-email" type="button">Copy email</button>
+      </div>
+      <p>Or find me on <a href="https://www.linkedin.com/in/zubayer-ahmad/">LinkedIn</a> and <a href="https://github.com/zatrabbi">GitHub</a>.</p>
+      <footer>© 2026 Zubayer Ahmad · Dhaka</footer>
+    </section>
+  </main>
+</div>
+
+<script>
+(function () {
+  // Accuracy chart: one shared scale for dots, whiskers, ticks and labels.
+  var data = [
+    ["MaxViT-Tiny", 97.75, 0.45],
+    ["ConvNeXt-Tiny", 97.40, 0.83],
+    ["CoAtNet-0", 97.20, 0.38],
+    ["Swin-Tiny", 97.05, 0.46],
+    ["ViT-B/16", 96.55, 0.45],
+    ["EfficientNetV2-S", 96.05, 0.31],
+    ["MobileNetV3-Large", 94.64, 0.57]
+  ];
+  var svg = document.getElementById("acc-chart");
+  var NS = "http://www.w3.org/2000/svg";
+  var left = 150, right = 610, top = 14, rowH = 30, min = 93, max = 99;
+  var x = function (v) { return left + (v - min) / (max - min) * (right - left); };
+  function el(name, attrs, text) {
+    var n = document.createElementNS(NS, name);
+    var style = "";
+    for (var k in attrs) {
+      // CSS variables only resolve reliably through style, not SVG attributes
+      if (k === "fill" || k === "stroke" || k === "font-family") style += k + ":" + attrs[k] + ";";
+      else n.setAttribute(k, attrs[k]);
+    }
+    if (style) n.setAttribute("style", style);
+    if (text != null) n.textContent = text;
+    svg.appendChild(n);
+    return n;
+  }
+  var bottom = top + rowH * data.length;
+  for (var t = min; t <= max; t++) {
+    el("line", { x1: x(t), x2: x(t), y1: top - 4, y2: bottom, stroke: "var(--line)", "stroke-width": 1 });
+    el("text", { x: x(t), y: bottom + 20, "text-anchor": "middle", fill: "var(--muted)", "font-family": "var(--mono)", "font-size": 12 }, t + "%");
+  }
+  data.forEach(function (d, i) {
+    var y = top + rowH * i + rowH / 2;
+    var best = i === 0;
+    el("text", { x: left - 14, y: y + 4, "text-anchor": "end", fill: best ? "var(--ink)" : "var(--muted)", "font-family": "var(--body)", "font-size": 13, "font-weight": best ? 600 : 400 }, d[0]);
+    el("line", { x1: x(d[1] - d[2]), x2: x(d[1] + d[2]), y1: y, y2: y, stroke: "var(--green)", "stroke-width": 2, "stroke-linecap": "round", opacity: best ? 1 : 0.55 });
+    el("circle", { cx: x(d[1]), cy: y, r: best ? 6 : 4.5, fill: best ? "var(--green)" : "var(--surface)", stroke: "var(--green)", "stroke-width": 2 });
+    if (best) el("text", { x: x(d[1] + d[2]) + 10, y: y + 4, fill: "var(--green)", "font-family": "var(--mono)", "font-size": 12, "font-weight": 500 }, d[1].toFixed(2) + "%");
+  });
+
+  // Copy email: clipboard where allowed, otherwise select the text.
+  var btn = document.getElementById("copy-email");
+  var code = document.getElementById("email");
+  btn.addEventListener("click", function () {
+    var done = function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy email"; }, 1800); };
+    var select = function () {
+      var r = document.createRange(); r.selectNodeContents(code);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = "Selected: press Ctrl/Cmd + C";
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code.textContent).then(done, select);
+    } else { select(); }
+  });
+})();
+</script>
+</body>
+</html>
